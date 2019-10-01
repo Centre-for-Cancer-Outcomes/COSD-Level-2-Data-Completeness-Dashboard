@@ -36,7 +36,7 @@ ui <- dashboardPage(
       menuItem("Data Completeness",tabName = "DataCompleteness", icon = icon("dashboard")),
       menuItem("Selected Data",tabName = "SelectedData",icon = icon("table"))
     ),
-    helpText("Devloped by The North Central and Wast London Centre for Cancer Outcomes")
+    helpText("Devloped by The North Central and East London Centre for Cancer Outcomes")
   ),
   dashboardBody(
     tabItems(
