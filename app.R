@@ -64,10 +64,10 @@ ui <- dashboardPage(
                 DT::dataTableOutput("completedatatable")
               ),
               fluidRow(
-                  box(selectInput("cancertype2" , label = "Cancer Type" , choices = unique(factor(cosd$cancertype)), selected = "Breast "),status = "warning",title = "Cancer Type 1", solidHeader = TRUE),
-                  box(selectInput("cancertype3" , label = "Cancer Type" , choices = unique(factor(cosd$cancertype)), selected = "Gynaecology "),status = "warning",title = "Cancer Type 2", solidHeader = TRUE),
-                  box( selectInput("cancertype4" , label = "Cancer Type" , choices = unique(factor(cosd$cancertype)), selected = "Total "),status = "warning",title = "Cancer Type 3", solidHeader = TRUE),
-                  box( selectInput("cancertype5" , label = "Cancer Type" , choices = unique(factor(cosd$cancertype)), selected = "Melanoma "),status = "warning",title = "Cancer Type 4", solidHeader = TRUE)
+                  box(selectInput("cancertype2" , label = "Cancer Type" , choices = unique(factor(cosd$cancertype)), selected = "Breast"),status = "warning",title = "Cancer Type 1", solidHeader = TRUE),
+                  box(selectInput("cancertype3" , label = "Cancer Type" , choices = unique(factor(cosd$cancertype)), selected = "Gynaecology"),status = "warning",title = "Cancer Type 2", solidHeader = TRUE),
+                  box( selectInput("cancertype4" , label = "Cancer Type" , choices = unique(factor(cosd$cancertype)), selected = "Total"),status = "warning",title = "Cancer Type 3", solidHeader = TRUE),
+                  box( selectInput("cancertype5" , label = "Cancer Type" , choices = unique(factor(cosd$cancertype)), selected = "Melanoma"),status = "warning",title = "Cancer Type 4", solidHeader = TRUE)
                   ),
               fluidRow(
                plotOutput("questionablegraph",height = 300) 
@@ -255,7 +255,7 @@ output$completenessboxplot <- renderPlot({
 output$cpmletespc <- renderPlot({
   
 spcchartdata <- cosd %>% 
-                filter(cosd$Trust == input$Cancer.Alliance &  cosd$Metric.Name == input$Metric.Name &
+                filter(cosd$Trust == input$Trust &  cosd$Metric.Name == input$Metric.Name &
                          cancertype == input$cancertype) %>% 
                 select(Month.of.Diagnosis,Trust,cancertype,percentage.completeness) %>% 
                 group_by(Month.of.Diagnosis,Trust,cancertype) %>% 
